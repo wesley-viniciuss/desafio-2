@@ -3,11 +3,11 @@ let heroVictories = 140
 let heroDefeats = 23
 let elo = defineElo(heroVictories, heroDefeats)
 let level = defineLevel(heroVictories, heroDefeats)
-console.log(`O Herói ${heroName} tem o elo ${elo} está no nível de ${level}`)
+console.log(`O Herói ${heroName} está no elo ${elo} está no nível ${level}`)
 
 function defineElo(heroVictories, heroDefeats)
 {
-    let total = heroVictories - heroDefeats
+    total = defineLevel(heroVictories, heroDefeats)
     let elo;
     if (10 > total)
     {
@@ -37,5 +37,10 @@ function defineElo(heroVictories, heroDefeats)
 
 function defineLevel(heroVictories, heroDefeats) 
 {
-    return heroVictories - heroDefeats
+    let level = heroVictories - heroDefeats
+    if (level < 0)
+    {
+        level = 0
+    }
+    return level
 }
